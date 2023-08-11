@@ -1,6 +1,7 @@
 import {
   _getUsers,
   _authenticateUser,
+  _getQuestions,
   _saveQuestion,
   _saveQuestionAnswer,
 } from "./_DATA";
@@ -11,6 +12,10 @@ export function getUsers(id) {
 
 export function authenticateUser(username, password) {
   return _authenticateUser(username, password);
+}
+
+export function getQuestions() {
+  return _getQuestions();
 }
 
 export function saveQuestion(question) {
