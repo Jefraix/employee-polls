@@ -21,7 +21,7 @@ export function addPollInUser(authedUser, qid) {
 
 export function addPollAnswerInUser({ authedUser, qid, answer }) {
   return {
-    type: ADD_ANSWER_IN_USER,
+    type: ADD_POLL_ANSWER_IN_USER,
     authedUser,
     qid,
     answer,
