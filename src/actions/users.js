@@ -30,7 +30,7 @@ export function addPollAnswerInUser({ authedUser, qid, answer }) {
 
 export function handleGetUsers() {
   return (dispatch) => {
-    return getUsers().then(({ users }) => {
+    return getUsers().then((users) => {
       dispatch(receiveUsers(users));
     });
   };
