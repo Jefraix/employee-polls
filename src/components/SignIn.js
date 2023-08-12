@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { handleSetAuthedUser } from "../actions/authedUser";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +30,7 @@ const SignIn = (props) => {
 
     props.dispatch(
       handleSetAuthedUser(username, password, (success) => {
-        if (success) navigate("/");
+        if (success) navigate(location.state?.redirect ?? "/");
         else setLoggingIn(false);
       })
     );
@@ -37,26 +38,29 @@ const SignIn = (props) => {
 
   return (
     <div className="sign-in-container">
-      <h3>Sign In</h3>
-      <form className="sign-in-form" onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={username}
-          onChange={handleUsernameInputChange}
-          disabled={loggingIn}
-        />
-        <input
-          type="text"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordInputChange}
-          disabled={loggingIn}
-        />
-        {!loggingIn ? <button>SIGN IN</button> : <p>Verifying sign in...</p>}
-      </form>
+      <h1>Welcome to the Employee Polls App!</h1>
+      <div className="sign-in-form">
+        <h3>Sign In</h3>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={username}
+            onChange={handleUsernameInputChange}
+            disabled={loggingIn}
+          />
+          <input
+            type="text"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordInputChange}
+            disabled={loggingIn}
+          />
+          {!loggingIn ? <button>SUBMIT</button> : <p>Verifying sign in...</p>}
+        </form>
+      </div>
     </div>
   );
 };
