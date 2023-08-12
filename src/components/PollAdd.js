@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const Home = (props) => {
+const PollAdd = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!props.authedUserName)
-      navigate("/signin", { state: { redirect: "/" } });
+      navigate("/signin", { state: { redirect: "/add" } });
   }, []);
 
   return (
-    <div className="home-container">
-      <h3>Home</h3>
+    <div className="new-poll-container">
+      <h3>Add A New Poll</h3>
     </div>
   );
 };
@@ -24,4 +24,4 @@ const mapStateToProps = ({ authedUser, users }) => {
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(PollAdd);
