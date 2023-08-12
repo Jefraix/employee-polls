@@ -6,8 +6,8 @@ import {
   _saveQuestionAnswer,
 } from "./_DATA";
 
-export function getUsers(id) {
-  return _getUsers(id);
+export function getUsers() {
+  return _getUsers();
 }
 
 export function authenticateUser(username, password) {
