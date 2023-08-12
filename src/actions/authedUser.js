@@ -16,14 +16,16 @@ export function removeAuthedUser() {
   };
 }
 
-export function handleSetAuthedUser(username, password) {
+export function handleSetAuthedUser(username, password, success) {
   return (dispatch) => {
     return authenticateUser(username, password)
       .then(({ id }) => {
         dispatch(setAuthedUser(id));
+        success(true);
       })
       .catch((e) => {
         console.warn("Error in handleSetAuthedUser", e);
+        success(false);
         alert("The password is incorrect or username does not exist");
       });
   };
