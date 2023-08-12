@@ -1,9 +1,27 @@
-const App = () => {
+import { connect } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+
+import SignIn from "./SignIn";
+import Home from "./Home";
+
+const App = (props) => {
   return (
     <div className="App">
-      <p className="hello-world">Hello World</p>
+      {props.loading === true ? (
+        <p className="loading-text">Loading...</p>
+      ) : (
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" exact element={<Home />} />
+        </Routes>
+      )}
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = ({ authedUser, users }) => ({
+  loading: Object.keys(users).length === 0,
+  authedUser,
+});
+
+export default connect(mapStateToProps)(App);
