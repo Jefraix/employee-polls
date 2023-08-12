@@ -17,7 +17,8 @@ code {
   width: 100%;
   display: flex;
   flex: 1;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -28,23 +29,34 @@ code {
 /* SIGN IN START */
 
 .sign-in-container {
-  padding: 20px;
-  border-style: groove;
-}
-
-.sign-in-container h3 {
-  text-align: center;
-}
-
-.sign-in-form {
   display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-.sign-in-form input {
-  padding: 5px;
-  margin: 5px;
+.sign-in-container h1 {
+  margin-bottom: 15vh;
+}
+
+.sign-in-form {
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.sign-in-form h3 {
+  text-align: center;
+}
+
+.sign-in-form form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .sign-in-form input {
@@ -57,14 +69,110 @@ code {
   margin: 5px;
 }
 
+.sign-in-form P {
+  padding: 5px;
+  margin: 5px;
+}
+
 /* SIGN IN END */
+
+/* NAV BAR START */
+
+.nav-bar {
+  width: 100vw;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.nav-bar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.nav-bar li {
+  list-style-type: none;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.nav-bar li a {
+  text-decoration: none;
+  color: #252525;
+  display: block;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.nav-bar li a:hover {
+  background-color: rgb(70, 116, 117);
+  color: white;
+}
+
+.nav-bar-selected {
+  background-color: rgb(159, 195, 196);
+}
+
+.nav-bar-user-options {
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+#welcomeMessage {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-bar-user-options a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #252525;
+  display: block;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  transition: 0.2s;
+}
+
+.nav-bar-user-options a:hover {
+  background-color: rgb(70, 116, 117);
+  color: white;
+}
+
+/* NAV BAR END */
 
 /* HOME START */
 
-.welcome-container {
-  background-color: black;
-  color: white;
+.home-container {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* HOME END */
+
+/* LEADERBOARD START */
+
+.leaderboard-container {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* LEADERBOARD END */
+
+/* NEW POLL START */
+
+.new-poll-container {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* NEW POLL END */
