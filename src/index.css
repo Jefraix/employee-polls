@@ -150,10 +150,66 @@ code {
 /* HOME START */
 
 .home-container {
-  text-align: center;
+  /*text-align: center;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100vw;
   height: 100vh;
 }
+
+/* POLLS CONTAINER START */
+
+.polls-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  width: 50vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.section-tabs {
+  display: flex;
+}
+
+.tab {
+  background-color: #e7e7e7;
+  color: black;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  flex-basis: 50%;
+}
+
+.selected-tab {
+  background-color: rgb(159, 195, 196);
+  color: black;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  flex-basis: 50%;
+}
+
+.tab-polls {
+  overflow: auto;
+  border: solid;
+  flex: 1;
+}
+
+.poll-placeholder {
+  padding: 15px 15px;
+  margin: 15px 15px;
+  border-style: groove;
+}
+
+/* POLLS CONTAINER END */
 
 /* HOME END */
 
