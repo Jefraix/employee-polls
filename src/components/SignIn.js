@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { handleSetAuthedUser } from "../actions/authedUser";
 import { useLocation, useNavigate } from "react-router-dom";
+import { handleReceivePolls } from "../actions/polls";
 
 const SignIn = (props) => {
   const navigate = useNavigate();
@@ -30,8 +31,11 @@ const SignIn = (props) => {
 
     props.dispatch(
       handleSetAuthedUser(username, password, (success) => {
-        if (success) navigate(location.state?.redirect ?? "/");
-        else setLoggingIn(false);
+        setLoggingIn(false);
+        if (success) {
+          props.dispatch(handleReceivePolls());
+          navigate(location.state?.redirect ?? "/");
+        }
       })
     );
   };
