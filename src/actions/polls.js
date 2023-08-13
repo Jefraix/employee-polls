@@ -29,7 +29,7 @@ function receivePolls(questions) {
 
 export function handleReceivePolls() {
   return (dispatch) => {
-    return getQuestions().then(({ questions }) => {
+    return getQuestions().then((questions) => {
       dispatch(receivePolls(questions));
     });
   };
