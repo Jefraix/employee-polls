@@ -1,5 +1,5 @@
 import { saveQuestion, saveQuestionAnswer } from "../utils/api";
-import { addPoll, addPollAnswer } from "./Polls";
+import { addPoll, addPollAnswer } from "./polls";
 import { addPollAnswerInUser, addPollInUser } from "./users";
 
 export function handleAddPoll(question) {
@@ -13,9 +13,10 @@ export function handleAddPoll(question) {
 
 export function handleAnswerPoll(pollAnswer) {
   return (dispatch) => {
+    dispatch(addPollAnswer(pollAnswer));
+    dispatch(addPollAnswerInUser(pollAnswer));
     return saveQuestionAnswer(pollAnswer).then(() => {
-      dispatch(addPollAnswer(pollAnswer));
-      dispatch(addPollAnswerInUser(pollAnswer));
+      console.log("Answer was updated in the backend");
     });
   };
 }
