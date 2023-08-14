@@ -163,8 +163,9 @@ code {
 .polls-container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
-  width: 50vw;
+  max-height: 90%;
+  width: 90%;
+  max-width: 600px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -199,19 +200,130 @@ code {
 
 .tab-polls {
   overflow: auto;
-  border: solid;
   flex: 1;
 }
 
-.poll-placeholder {
+/* POLL ENTRY START*/
+
+.poll-entry {
+  display: flex;
+  justify-content: space-between;
   padding: 15px 15px;
   margin: 15px 15px;
-  border-style: groove;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+
+.poll-author {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* POLL ENTRY END */
 
 /* POLLS CONTAINER END */
 
 /* HOME END */
+
+/* POLL DETAIL START*/
+
+.poll-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.poll-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 90%;
+  width: 90%;
+  max-width: 800px;
+  padding-bottom: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px;
+}
+
+.poll-detail-avatar {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 200px;
+  height: 200px;
+}
+
+.poll-detail-options-container {
+  display: flex;
+  width: 90%;
+}
+
+.poll-detail-option {
+  display: flex;
+  flex: 1;
+}
+
+.poll-detail-option-button {
+  background-color: #e7e7e7;
+  color: black;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: 0.2s;
+  margin: 10px 10px;
+  flex: 1;
+}
+
+.poll-detail-option-button:hover {
+  background-color: rgb(70, 116, 117);
+  color: white;
+}
+
+.poll-detail-option-selected {
+  background-color: rgb(70, 116, 117);
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: 0.2s;
+  margin: 10px 10px;
+  flex: 1;
+}
+
+.poll-detail-statistics-container {
+  display: flex;
+  margin-bottom: 25px;
+  width: 90%;
+}
+
+.poll-detail-statistic {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 10px 10px;
+}
+
+.poll-detail-statistic-block {
+  background-color: #e7e7e7;
+  color: black;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: 0.2s;
+  flex: 1;
+}
+
+/* POLL DETAIL END */
 
 /* LEADERBOARD START */
 
