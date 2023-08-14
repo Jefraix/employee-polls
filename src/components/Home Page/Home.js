@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import PollsSection from "./PollsSection";
-import { handleReceivePolls } from "../actions/polls";
 
 const Home = (props) => {
   const navigate = useNavigate();

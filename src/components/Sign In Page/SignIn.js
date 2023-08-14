@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { handleSetAuthedUser } from "../actions/authedUser";
+import { handleSetAuthedUser } from "../../actions/authedUser";
 import { useLocation, useNavigate } from "react-router-dom";
-import { handleReceivePolls } from "../actions/polls";
+import { handleReceivePolls } from "../../actions/polls";
 
 const SignIn = (props) => {
   const navigate = useNavigate();
