@@ -2,11 +2,12 @@ import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 import { addPoll, addPollAnswer } from "./polls";
 import { addPollAnswerInUser, addPollInUser } from "./users";
 
-export function handleAddPoll(question) {
+export function handleAddPoll(question, onCompletion) {
   return (dispatch) => {
     return saveQuestion(question).then((formattedQuestion) => {
       dispatch(addPoll(formattedQuestion));
       dispatch(addPollInUser(formattedQuestion.author, formattedQuestion.id));
+      onCompletion();
     });
   };
 }
