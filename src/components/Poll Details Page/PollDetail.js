@@ -5,6 +5,7 @@ import { handleAnswerPoll } from "../../actions/shared";
 
 import PollOption from "./PollOption";
 import PollStatistic from "./PollStatistic";
+import { isPollAnsweredByUser, pollsAreRetrieved } from "../../utils/helpers";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -28,8 +29,6 @@ const PollDetail = (props) => {
     }
   }, []);
 
-  if (!props.authedUser) return <h3>Redirecting...</h3>;
-
   const handleOptionClick = (optionPicked) => {
     props.dispatch(
       handleAnswerPoll({
@@ -42,7 +41,9 @@ const PollDetail = (props) => {
 
   return (
     <div className="poll-detail-container">
-      {props.loadingPolls ? (
+      {!props.authedUser ? (
+        <h3>Redirecting...</h3>
+      ) : props.loadingPolls ? (
         <h3>Loading poll...</h3>
       ) : props.showNotFound ? (
         <h3>ERROR 404: Requested Poll was not found</h3>
@@ -99,27 +100,33 @@ const mapStateToProps = ({ authedUser, polls, users }, props) => {
 
   // Check if User is authenticated
   if (!authedUser) {
-    return { authedUser, questionId: id };
+    return {
+      authedUser,
+      questionId: id,
+    };
   }
 
   // User authenticated, check if polls have been retrieved
-  if (Object.keys(polls).length === 0) {
-    return { authedUser, loadingPolls: true };
+  if (!pollsAreRetrieved(polls)) {
+    return {
+      authedUser,
+      loadingPolls: true,
+    };
   }
 
   const poll = polls[id];
 
   // Polls have been retrieved, check if requested poll exists
-  if (!poll) return { authedUser, showNotFound: true };
+  if (!poll) {
+    return {
+      authedUser,
+      showNotFound: true,
+    };
+  }
 
   const pollAuthor = users[poll.author];
-  let userSelection = null;
-
-  const isAnswered =
-    poll.optionOne.votes.includes(authedUser) ||
-    poll.optionTwo.votes.includes(authedUser);
-
-  if (isAnswered) userSelection = users[authedUser].answers[id];
+  const isAnswered = isPollAnsweredByUser(poll, authedUser);
+  const userSelection = isAnswered ? users[authedUser].answers[id] : "";
 
   return {
     authedUser,
