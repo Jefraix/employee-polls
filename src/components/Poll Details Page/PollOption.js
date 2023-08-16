@@ -5,14 +5,16 @@ const PollOption = ({
   optionText,
   handleOptionClick,
 }) => {
+  const applyStyle = (thisOption) => {
+    return userSelection === thisOption
+      ? "poll-detail-option-selected"
+      : "poll-detail-option-button";
+  };
+
   return (
     <div className="poll-detail-option">
       <button
-        className={
-          userSelection === option
-            ? "poll-detail-option-selected"
-            : "poll-detail-option-button"
-        }
+        className={applyStyle(option)}
         onClick={() => handleOptionClick(option)}
         disabled={isAnswered}
       >
