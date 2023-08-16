@@ -4,6 +4,10 @@ This is the final version for the final assessment project for Udacity's React &
 
 The Employee Polls web application allows users to answer and create polls for other users to interact with.
 
+The application has a home page where users can see the polls they have yet to answer, and those they have answered.
+
+The application has a leaderboard page where users are listed in order by their contribution count in terms of questions answered and polls created.
+
 ## Data
 
 There are two types of objects stored in the database:
@@ -45,7 +49,7 @@ Voting options are attached to questions. They include:
 | votes     | Array  | A list that contains the id of each user who voted for that option |
 | text      | String | The text of the option                                             |
 
-Your code talks to the database via 5 methods:
+The code talks to the database via 5 methods:
 
 - `_authenticateUser()`
 - `_getUsers()`
@@ -55,8 +59,8 @@ Your code talks to the database via 5 methods:
 
 1. `_authenticateUser()` Method
 
-_Description_: Verify credentials submitted in sign in form
-_Return Value_: The authenticated user if sign in is successful, an error if not
+_Description_: Verify credentials submitted in sign in form.
+_Return Value_: The authenticated user if sign in is successful, an error if not.
 
 2. `_getUsers()` Method
 
