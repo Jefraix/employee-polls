@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import PollsSection from "./PollsSection";
+import { pollsAreRetrieved } from "../../utils/helpers";
 
 const Home = (props) => {
   const navigate = useNavigate();
-
   const [activeTab, setActiveTab] = useState("unanswered");
 
   useEffect(() => {
-    if (!props.authedUserName) {
+    if (!props.authedUser) {
       navigate("/signin", { state: { redirect: "/" } });
     }
   }, []);
@@ -31,12 +31,14 @@ const Home = (props) => {
           <button
             className={applySelectedStyle("unanswered")}
             onClick={() => handleTabChange("unanswered")}
+            data-testid="unansweredTab"
           >
             Unanswered
           </button>
           <button
             className={applySelectedStyle("answered")}
             onClick={() => handleTabChange("answered")}
+            data-testid="answeredTab"
           >
             Answered
           </button>
@@ -51,11 +53,10 @@ const Home = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, users, polls }) => {
-  const authedUserName = users[authedUser]?.name;
+const mapStateToProps = ({ authedUser, polls }) => {
   return {
-    authedUserName,
-    loadingPolls: Object.keys(polls).length === 0,
+    authedUser,
+    loadingPolls: !pollsAreRetrieved(polls),
   };
 };
 
